@@ -1,5 +1,15 @@
 ## Hi there 👋
 
+- 🔭 I’m currently working on updating my website :)
+- 🌱 I’m currently learning about data structures and computer organization
+- 👯 I’m looking to collaborate on my website :p
+- 🤔 I’m looking for help with my website!
+- 💬 Ask me about anything!!!
+- 📫 How to reach me: email - hderege@seattleu.edu
+- 😄 Pronouns: she/her
+- ⚡ Fun fact: I made my first project in the 4th grade!
+
+
 <!--
 **hirnahate/hirnahate** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
