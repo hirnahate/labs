@@ -1,0 +1,5 @@
+20
+pumpkin 160 @
+ghost 572 O
+spider 16 *
+bat 250 ^

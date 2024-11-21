@@ -1,0 +1,6 @@
+cookie 2.39 17
+donut 1.29 9
+eclair 6 3
+muffin 3.99 0
+roll 0.89 24
+bread 2 4
