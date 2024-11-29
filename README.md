@@ -18,15 +18,14 @@ This repository contains projects I've completed as part of my coursework. Each 
 ## 💻 Projects
 Here are some of the projects you'll find in this repository:
 
-1. **Project Name**  
-   - 📁 Description: Brief overview of what this project is about.  
+1. Covid Folder 
+   - 📁 Description: With text files containing variuous information, I created a database to access this information for various states.
    - 🛠️ Skills Used: List of technologies, languages, or concepts applied.  
 
-2. **Project Name**  
-   - 📁 Description: Brief overview of what this project is about.  
-   - 🛠️ Skills Used: List of technologies, languages, or concepts applied.  
+2. Games Folder  
+   - 📁 Description: There are a few programs in ths folder, but all involve some sort of guessing game  
+   - 🛠️ Skills Used: random values, languages, or concepts applied.  
 
-*(Update this section as you add more projects!)*
 
 ---
 
