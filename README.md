@@ -20,15 +20,15 @@ Here are some of the projects you'll find in this repository:
 
 1. Covid Folder 
    - 📁 Description: With text files containing variuous information, I created a database to access this information for various states.
-   - 🛠️ Skills Used: 
+   - 🛠️ Skills Used: File I/O, Data parsing and processing, Basic database operations
 
 2. Games Folder  
    - 📁 Description: With a text file of contain mant words I created a game similar to hangman or wordle.
-   - 🛠️ Skills Used: random values, user input
+   - 🛠️ Skills Used: File I/O, Random value generation, User input handling, Control Structres
   
 3. Fancy Folder  
    - 📁 Description: I created a linked list with 'fancy' functions
-   - 🛠️ Skills Used: linked lists
+   - 🛠️ Skills Used: Linked lists implementation, memory mangement, Alogrithm design for custom functions
 
 
 ---
