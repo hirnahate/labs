@@ -1,17 +1,51 @@
-# Hi there 👋 Welcome to my GitHub!
+# 📚 School Projects Repository
 
-I'm passionate about building and learning, and this space is where I share my journey as a developer. Here's a little about me:
+Welcome to my repository for school projects! This is a collection of the work I've done throughout my academic journey, showcasing my learning, skills, and creativity. Feel free to explore and check out what I've been working on! 😊
 
-- 🔭 **What I’m working on:** Updating my personal website 🚀  
-- 🌱 **What I’m learning:** Exploring data structures and computer organization 🧠  
-- 👯 **What I’m looking to collaborate on:** Contributions to my website (let’s make it awesome together!) ✨  
-- 🤔 **What I need help with:** Open to suggestions and improvements for my website—any tips are welcome! 💡  
-- 💬 **Ask me about:** Anything! I’m always happy to chat and share what I know 📚  
-- 📫 **How to reach me:** Email me at [hderege@seattleu.edu](mailto:hderege@seattleu.edu) 📩  
-- 😄 **Pronouns:** She/Her  
-- ⚡ **Fun fact:** I built my first project in the 4th grade—been coding ever since! 🌟  
+## 🔖 Table of Contents
+- [About](#about)
+- [Projects](#projects)
+- [Technologies](#technologies)
+- [Contact](#contact)
 
-Let’s connect, create, and grow together! 🌐✨
+---
+
+## 📖 About
+This repository contains projects I've completed as part of my coursework. Each project represents a step in my learning process and reflects my progress in areas like programming, data structures, algorithms, and more.
+
+---
+
+## 💻 Projects
+Here are some of the projects you'll find in this repository:
+
+1. **Project Name**  
+   - 📁 Description: Brief overview of what this project is about.  
+   - 🛠️ Skills Used: List of technologies, languages, or concepts applied.  
+
+2. **Project Name**  
+   - 📁 Description: Brief overview of what this project is about.  
+   - 🛠️ Skills Used: List of technologies, languages, or concepts applied.  
+
+*(Update this section as you add more projects!)*
+
+---
+
+## 🛠️ Technologies
+Here are some of the technologies and tools I’ve used across my projects:
+- Programming Languages: C++, Java, Python, XML, R
+- Tools: Git, VSCode, Intellij, Eclipse
+- Topics: Data Structures, Algorithms, Computer Organization
+
+---
+
+## 📫 Contact
+Have questions or want to collaborate? Feel free to reach out:
+- Email: [hderege@seattleu.edu](mailto:hderege@seattleu.edu)
+
+---
+
+⭐ **Thank you for checking out my work! Don’t forget to leave a star if you find something interesting.** 🌟
+
 
 
 <!--
