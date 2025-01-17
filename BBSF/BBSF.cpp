@@ -1,103 +1,162 @@
 // Hirna Derege
 // nov 11, 2024
-// main file, hw5.cpp
+// implementation, BBSF.cpp
 
 #include <iostream>
+#include <vector>
 #include <sstream>
 #include "BBSF.h"
 using namespace std;
 
-string displayMenu(){
-    string choice;
-    cout << "\n************ Menu ************" << endl;
-    cout << "I <num> - insert <num>" << endl;
-    cout << "D <num> - delete <num> " << endl;
-    cout << "S <num> - search for <num>, if found print yes, else no" << endl;
-    cout << "P <num> - search for <num>, if founf print size of <num>'s BST, else 0" << endl;
-    cout << "NUM - prints total num of elements in BSF" << endl;
-    cout << "SOR - prints all elements in BBSF (sorrted)" << endl;
-    cout << "TER - deletes all the elements in BBSF and exits" << endl;
-
-    cout << "what operation would you like to execute? ";
-    getline(cin, choice);
-
-    return choice;
-} // end of displayMenu
-
-int main(){
-    BBSF tree;  
-    string operation;
-
-    displayMenu();
-    while(true){
-        operation = displayMenu();
-
-        stringstream sym(operation);
-        string choice;
-        int num;
-
-        sym >> choice;
-        if(choice == "I" || choice == "i"){
-            if(sym >> num)
-                tree.insertNode(num);
-            else    
-                cout << "invalid input. please enter a char and a int " << endl;
-        } 
-        
-        else if(choice == "D" || choice == "d"){
-            if(sym >> num)
-                tree.deleteBST(num);
-            else    
-                cout << "invalid input. please enter a char and a int " << endl;
-        } 
-        
-        else if(choice == "S" || choice == "s"){
-            if(sym >> num)
-                if(tree.searchBST(tree.getHead()->bstRoot, num))
-                    cout << num << " is a member of the forest! " << endl;
-                else 
-                    cout << num << " is not a member of the forest. " << endl;
-            else    
-                cout << "invalid input. please enter a char and a int " << endl;
-        } 
-        
-        else if(choice == "P" || choice == "p"){
-            if(sym >> num){
-                BBSF :: Tree* parentBST = tree.parentSearch(tree.getHead()->bstRoot, num);
-                if(parentBST)
-                    cout << "the BST containig " << num << " parent is " << parentBST << endl;
-                else 
-                    cout << num << " is not a member of the forest. " << endl;
-            } else    
-                cout << "invalid input. please enter a char and a int " << endl;
-        } 
-
-        else if(choice == "NUM" || choice == "num")
-            cout << "total number of elements in the forest: " << tree.getSize() << endl;
-
-        else if (choice == "SOR" || choice == "sor"){
-            vector<int> sorted;
-            BBSF :: Node* curr = tree.getHead();
-            while(curr){
-                tree.inOrder(curr->bstRoot, sorted);
-                curr = curr->next;
-            }
-
-            cout << "sorted elements of forest: ";
-            for(int i : sorted)
-                cout << i << " ";
-            cout << endl;
-        } 
-
-        else if(choice == "TER" || choice == "ter"){
-            cout << "terminating program and clearing binary search forest..." << endl;
-            delete tree.getHead();
-            break;
-        } 
-
-        else    
-            cout << "invalid choice, try again " << endl;
+BBSF :: Node* BBSF :: insertNode(int n){
+    if(!head){
+        head = new Node();
+        head->bstRoot = new Tree(n);
+        head->bstSize = 1;
+        size++;
+        return head;
     }
 
-    return 0;
-} // end of main
+    Node* minimum = head;
+    for(Node* curr = head; curr != nullptr; curr = curr->next){
+        if(searchBST(curr->bstRoot, n)){
+            cout << "already in forest! " << endl;
+            return nullptr;
+        }
+
+        if(curr->bstSize < minimum->bstSize)
+            minimum = curr;
+    }
+
+    minimum->bstRoot = insert(minimum->bstRoot, n);
+    minimum->bstSize++;
+    size++;
+    return head;
+} // end of insertNode
+
+BBSF :: Tree* BBSF :: insert(Tree* root, int n){
+    if(!root)
+        return new Tree(n);
+
+    if (n < root->val) 
+        root->left = insert(root->left, n);
+    else if (n > root->val) 
+        root->right = insert(root->right, n);
+
+    return root;
+} // end of insert
+
+void BBSF :: deleteBST(int n){
+    Node* prev = nullptr;
+    Node* curr = head;
+
+    while(curr) {
+        if(searchBST(curr->bstRoot, n)){
+            curr->bstRoot = deleteFromBST(curr->bstRoot, n);
+            curr->bstSize--;
+            size--;
+
+            if(curr->bstSize == 0){
+                if(prev)
+                    prev->next = curr->next;
+                else   
+                    head = curr->next;
+                delete curr;
+            }
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+    cout << "element is not in forest!" << endl;
+} // end of deleteBST
+
+BBSF :: Tree* BBSF :: deleteFromBST(Tree* root, int n){
+    if(!root)   
+        return nullptr;
+    if (n < root->val) {
+        root->left = deleteFromBST(root->left, n);
+    } else if (n > root->val) {
+        root->right = deleteFromBST(root->right, n);
+    } else {
+        if(!root->left){
+            Tree* temp = root->right;
+            delete root;
+            return temp;
+        } else if(!root->right){
+            Tree* temp = root->left;
+            delete root;
+            return temp;
+        }
+
+        Tree* temp = minimum(root->right);
+        root->val = temp->val;
+        root->right = deleteFromBST(root->right, temp->val);
+    }
+    return root;
+} // end of deleteFromBST
+
+bool BBSF::searchBST(Tree* root, int n) {
+    if (!root)
+        return false;
+    if (root->val == n)
+        return true;
+    return n < root->val ? searchBST(root->left, n) : searchBST(root->right, n);
+} // end of searchBST
+
+BBSF :: Tree* BBSF :: parentSearch(Tree* root, int n){
+    Node* curr = head;
+    while(curr){
+        if(searchBST(curr->bstRoot, n))
+            return curr->bstRoot;
+        curr = curr->next;
+    }
+    return nullptr;
+} // end of parentSearch
+
+BBSF :: Tree* BBSF :: pointerSearch(Tree* root, int n){
+    if(!root)
+        return nullptr;
+    if(root->val < n)
+        root->left = pointerSearch(root->left, n);
+    else if (root->val > n)
+        root->right = pointerSearch(root->right, n);
+    else
+        return root;
+
+    return nullptr;
+} // end of pointerSearch
+
+void BBSF :: merge(){
+    if(!head)
+        return;
+
+    vector<int> elements;
+    Node* curr = head;
+    while(curr){
+        inOrder(curr->bstRoot,elements);
+        curr = curr->next;
+    }
+
+    Tree* merged = nullptr;
+    for(int val : elements)
+        merged = insert(merged, val);
+
+    head = new Node(elements.size());
+    head->bstRoot = merged;
+    size = elements.size();
+} // end of merge
+
+BBSF :: Tree* BBSF :: minimum(Tree* root){
+    while(root && root->left != nullptr)
+        root = root->left;
+    return root;
+} // end of minimum
+
+void BBSF :: inOrder(Tree* root, vector<int>& elements){
+    if(!root)
+        return;
+
+    inOrder(root->left, elements);
+    elements.push_back(root->val);
+    inOrder(root->right, elements);
+} // end of inOrder
